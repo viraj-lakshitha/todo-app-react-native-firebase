@@ -27,17 +27,15 @@ export default class AddListModal extends Component {
   };
 
   createTodo = () => {
-      const { name,color } = this.state;
+    const { name, color } = this.state;
 
-      tempData.push({
-          name,
-          color,
-          todos: []
-      });
+    const list = { name, color };
 
-      this.setState({ name: ""});
-      this.props.closeModal();
-  }
+    this.props.addList(list);
+
+    this.setState({ name: "" });
+    this.props.closeModal();
+  };
 
   renderColors() {
     return this.backgroundColor.map((color) => {
@@ -70,13 +68,19 @@ export default class AddListModal extends Component {
             onChangeText={(text) => this.setState({ name: text })}
           />
 
-          <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 12 }}>
-              {this.renderColors()}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 12,
+            }}
+          >
+            {this.renderColors()}
           </View>
 
           <TouchableOpacity
             style={[styles.create, { backgroundColor: this.state.color }]}
-            onPress= {this.createTodo}
+            onPress={this.createTodo}
           >
             <Text style={{ color: Colors.white, fontWeight: "600" }}>
               Create !
@@ -118,8 +122,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   colorSelect: {
-      width: 30,
-      height: 30,
-      borderRadius: 4
-  }
+    width: 30,
+    height: 30,
+    borderRadius: 4,
+  },
 });
