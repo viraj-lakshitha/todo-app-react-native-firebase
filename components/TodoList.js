@@ -24,15 +24,11 @@ export default class TodoList extends React.Component {
           visible={this.state.showListVisible}
           onRequestClose={() => this.toggleListModal()}
         >
-<<<<<<< HEAD
           <TodoModal
             list={list}
             closeModal={() => this.toggleListModal()}
-            updateList={this.props.updateList}
+            updateList={this.props.addList}
           />
-=======
-          <TodoModal list={list} closeModal={() => this.toggleListModal()} />
->>>>>>> parent of c2c1901... Error
         </Modal>
 
         <TouchableOpacity

@@ -1,26 +1,31 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View, FlatList, Modal} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  FlatList,
+  Modal,
+} from "react-native";
 import Colors from "./Colors";
-import { AntDesign } from '@expo/vector-icons';
-import tempData from './tempData';
-import TodoList from './components/TodoList';
-import AddListModal from './components/AddListModal';
+import { AntDesign } from "@expo/vector-icons";
+import tempData from "./tempData";
+import TodoList from "./components/TodoList";
+import AddListModal from "./components/AddListModal";
 
 export default class App extends React.Component {
-
   state = {
-    addTodoVisible: false
+    addTodoVisible: false,
   };
 
   toggleAddTodoModal() {
     this.setState({ addTodoVisible: !this.state.addTodoVisible });
   }
 
-  renderList= list => {
-    return <TodoList list={list} />
-  }
+  renderList = (list) => {
+    return <TodoList list={list} />;
+  };
 
-<<<<<<< HEAD
   addList = (list) => {
     this.setState({
       lists: [
@@ -37,15 +42,16 @@ export default class App extends React.Component {
       }),
     });
   };
-=======
->>>>>>> parent of c2c1901... Error
 
   render() {
     return (
       <View style={styles.container}>
-
-        <Modal animationType="slide" visible={this.state.addTodoVisible} onRequestClose={() => this.toggleAddTodoModal()}>
-          <AddListModal closeModal={() => this.toggleAddTodoModal() } />
+        <Modal
+          animationType="slide"
+          visible={this.state.addTodoVisible}
+          onRequestClose={() => this.toggleAddTodoModal()}
+        >
+          <AddListModal closeModal={() => this.toggleAddTodoModal()} />
         </Modal>
 
         <View style={{ flexDirection: "row" }}>
@@ -60,7 +66,10 @@ export default class App extends React.Component {
         <Text style={styles.add}>Make your life formal !</Text>
 
         <View style={{ marginVertical: 48 }}>
-          <TouchableOpacity style={styles.addList} onPress={ ()=> this.toggleAddTodoModal()}>
+          <TouchableOpacity
+            style={styles.addList}
+            onPress={() => this.toggleAddTodoModal()}
+          >
             <AntDesign name="plus" size={24} color={Colors.lightBlue} />
           </TouchableOpacity>
 
@@ -73,10 +82,9 @@ export default class App extends React.Component {
             keyExtractor={(item) => item.name}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            renderItem= {({ item }) => this.renderList(item)}
+            renderItem={({ item }) => this.renderList(item)}
           />
         </View>
-
       </View>
     );
   }
