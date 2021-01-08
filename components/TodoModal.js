@@ -14,14 +14,15 @@ import Colors from "../Colors";
 
 export default class TodoModal extends React.Component {
   state = {
-    newTodo: ""
+    newTodo: "",
   };
 
-  toggleTodoCompleted = index => {
-    let lists = this.props.list;
-    lists.todos[index].completed = !lists.todos[index].completed;
-    this.props.updateList(lists);
-  }
+  toggleTodoCompleted = (index) => {
+    let list = this.props.list;
+    list.todos[index].completed = !list.todos[index].completed;
+
+    this.props.updateList(list);
+  };
 
   renderTodo = (todo, index) => {
     return (
@@ -53,8 +54,7 @@ export default class TodoModal extends React.Component {
   render() {
     const list = this.props.list;
     const taskCount = list.todos.length;
-    const completedCount = list.todos.filter((todo) => todo.completed)
-      .length;
+    const completedCount = list.todos.filter((todo) => todo.completed).length;
 
     return (
       <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
