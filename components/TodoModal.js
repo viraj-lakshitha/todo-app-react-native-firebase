@@ -18,10 +18,10 @@ export default class TodoModal extends React.Component {
   };
 
   toggleTodoCompleted = (index) => {
-    let list = this.props.list;
-    list.todos[index].completed = !list.todos[index].completed;
-
-    this.props.updateList(list);
+    // let list =
+    this.props.list.todos[index].completed = !this.props.list.todos[index]
+      .completed;
+    this.props.updateList(this.props.list);
   };
 
   renderTodo = (todo, index) => {
